@@ -1,5 +1,40 @@
 ## Challenges
 
+# EBNF
+``` 
+expression     → literal
+               | unary
+               | binary
+               | grouping ;
+
+literal        → NUMBER | STRING | "true" | "false" | "nil" ;
+grouping       → "(" expression ")" ;
+unary          → ( "-" | "!" ) expression ;
+binary         → expression operator expression ;
+operator       → "==" | "!=" | "<" | "<=" | ">" | ">="
+               | "+"  | "-"  | "*" | "/" ;
+```
+
+# AST
+``` 
+Expression
+├─ Literal
+│  ├─ NUMBER
+│  ├─ STRING
+│  ├─ "true"
+│  ├─ "false"
+│  └─ "nil"
+├─ Unary
+│  ├─ "-" Expression
+│  └─ "!" Expression
+├─ Binary
+│  ├─ Expression Operator Expression
+│  └─ ...
+└─ Grouping
+   └─ "(" Expression ")"
+
+```
+
 ### Chapter 4: Scanning
 
 1. The lexical grammars of Python and Haskell are not _regular_. What does that mean, and why aren't they?

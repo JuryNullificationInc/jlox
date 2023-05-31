@@ -127,7 +127,7 @@ public class Scanner {
         TokenType type = keywords.get(text);
         if (type == null) type = IDENTIFIER;
         addToken(type);
-        addToken(IDENTIFIER);
+        //addToken(IDENTIFIER); This line is wrong. I'm not sure how or when I wrote it, but it borks evaluating Statements.
     }
 
     private void string() {
